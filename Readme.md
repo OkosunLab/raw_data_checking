@@ -9,5 +9,12 @@ They might have just one file for the tar archive or md5 values for each fastq.
 Either way you can get the md5 for a file like this:
 
 ```
-md5sum $NewFile
+md5sum $NewArchive.tar.gz
+md5sum $NewFile.fastq.gz
+```
+
+## untaring the archive
+
+```
+tar -zxvf $NewArchive.tar.gz
 ```
