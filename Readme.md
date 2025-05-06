@@ -41,5 +41,8 @@ sed 's/-/_/g' will replace any - with _ as they can cause issues down the line.
 ## Sample sheet generation
 
 ```
-echo "sample" > SampleSheet.txt; for file in $(find FASTQ_Raw/ -name "*R1*"); do sample=$(basename $file | sed 's/_S[0-9].*//'); echo $sample; done  >> SampleSheet.txt
+echo "sample" > SampleSheet.txt;
+  for file in $(find FASTQ_Raw/ -name "*R1*");
+  do sample=$(basename $file | sed 's/_S[0-9].*//');
+  echo $sample; done  >> SampleSheet.txt
 ```
