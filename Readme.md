@@ -23,5 +23,17 @@ tar -zxvf $NewArchive.tar.gz
 
 ```
 mkdir FASTQ_Raw
-find -name "PRIZM*fastq.gz" | xargs -I{} mv {} FASTQ_Raw/
+find -name "$PROJECT*fastq.gz" | xargs -I{} mv {} FASTQ_Raw/
 ```
+
+## Create symbolic links for fastq files back to the raw data folder
+
+From inside the FASTQ_Raw folder of the project directory (NOT Raw_Data folder)
+
+```
+for file in $(find /data/BCI-OkosunLab/Raw_Data/$Path/$To/FASTQ_Raw/ -name "*fastq.gz"); 
+  do ln -s $file $(basename $file | sed 's/-/_/g');
+done
+```
+
+sed 's/-/_/g' will replace any - with _ as they can cause issues down the line.
