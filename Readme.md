@@ -18,3 +18,10 @@ md5sum $NewFile.fastq.gz
 ```
 tar -zxvf $NewArchive.tar.gz
 ```
+
+## Move FASTQ files into FASTQ_Raw folder
+
+```
+mkdir FASTQ_Raw
+find -name "PRIZM*fastq.gz" | xargs -I{} mv {} FASTQ_Raw/
+```
