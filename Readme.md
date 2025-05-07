@@ -94,3 +94,15 @@ echo "sample" > SampleSheet.txt;
   do sample=$(basename $file | sed 's/_S[0-9].*//');
   echo $sample; done  >> SampleSheet.txt
 ```
+
+
+```
+echo -e "sample\ttumour\ttumourID\tnormal\tnormalID" > Sample.Sheet.tsv;
+for file in FASTQ_Raw/*R1*;
+  do sample=$(basename $file | sed 's/_S[0-9][0-9]*.*//');
+  bam=$(echo $sample.con.bam);
+  normal=$(find ../../../WES/Alignment -name "*${sample%%_PL_S*}*BC*bam");
+  normalID=$(basename $normal | sed 's/.recalib.bam//');
+  echo -e "$sample\t$bam\t$sample\t$normal\t$normalID" ;
+done >> Sample.Sheet.tsv
+```
