@@ -4,7 +4,7 @@
 
 ### What is MD5 and why is it helpful?
 
-MD5 is a 128-bit hash, commonly used as a digital fingerprint. The hashing algorithm takes a file and returns the hash. Whilst possible that different files *could* have the same hash this is quite unlikely. In addition any changes to the file (e.g. data loss/corruption during download etc ...) will likely lead to dramatically different hashes. As such it is a very hand tool to verify that the files you have receIved are the ones that were sent (for sequencing for instance).
+MD5 is a 128-bit hash, commonly used as a digital fingerprint. The hashing algorithm takes a file and returns the hash. Whilst possible that different files *could* have the same hash this is quite unlikely. In addition any changes to the file (e.g. data loss/corruption during download, etc) will likely lead to dramatically different hashes. As such it is a very hand tool to verify that the files you have receIved are the ones that were sent (for sequencing for instance).
 
 595f44fec1e92a71d3e9e77456ba80d1 original_file.txt  
 595f44fec1e92a71d3e9e77456ba80d1 downloaded_file.txt  
