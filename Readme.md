@@ -106,3 +106,20 @@ for file in FASTQ_Raw/*R1*;
   echo -e "$sample\t$bam\t$sample\t$normal\t$normalID" ;
 done >> Sample.Sheet.tsv
 ```
+
+```
+echo -e "sample\ttumour\ttumourID\tnormal\tnormalID\tsex" > Sample.Sheet.tsv;
+for file in FASTQ_Raw/*R1*;
+  do sample=$(basename $file | sed 's/_S[0-9][0-9]*.*//');
+  bam=$(echo Alignment/$sample.con.bam);
+  normal=$(find ../../../WES/Alignment -name "*${sample%%_PL_S*}*BC*bam");
+  normalID=$(basename $normal | sed 's/.recalib.bam//');
+  patient=$(echo $sample | sed 's/.*TNO_\([0-9]*\).*/\1/' | sed 's/^0//');
+  sex=$(grep "^$patient," ../../../Datasheets/Outcomes.csv | cut -d ',' -f 2);
+  chrom=$(if [[ $sex == "Male" ]];
+    then echo XY;
+    else echo XX;
+  fi);
+  echo -e "$sample\t$bam\t$sample\t$normal\t$normalID\t$chrom" ;
+done >> Sample.Sheet.tsv
+```
